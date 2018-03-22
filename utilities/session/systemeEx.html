@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Detection de système</title>
+    <style>
+      h1{
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Detection de système d'exploitation</h1>
+    <hr />
+    <p id="texte"></p>
+
+    <script>
+      var texte = navigator.userAgent;
+      var para = document.getElementById("texte");
+
+      document.write('Votre OS: '+ texte);
+      if(/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream){
+        alert("iOS est utilisé.");
+      }
+
+    </script>
+  </body>
+</html>

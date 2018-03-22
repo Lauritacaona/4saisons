@@ -1,0 +1,37 @@
+{
+   "sequence":4,
+   "type":"exercice",
+   "description":"Nick Keeble, ce coeur sensible",
+   "taches":{
+      "tache1":{
+        "titre": "Fond a faire",
+         "description":"Nick Keeble rougit en pensant à Sally Moore",
+         "responsable":19,
+         "progression":"en cours",
+         "validation":{
+            "Vincent":false,
+            "Michel":true,
+            "MAC":false
+         },
+         "taskeurs":[
+            19,
+            22,
+            45
+         ]
+      },
+      "tache2":{
+        "titre": "Modification de visuel",
+         "description":"Changer la coupe de cheveux de Miss Blunder",
+         "responsable":36,
+         "progression":"fait",
+         "validation":{
+            "Vincent":false,
+            "Michel":true,
+            "MAC":false
+         },
+         "taskeurs":[
+           22
+         ]
+      }
+   }
+}

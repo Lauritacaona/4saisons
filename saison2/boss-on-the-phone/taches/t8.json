@@ -1,0 +1,54 @@
+{
+   "emplacement":"..\/..\/saison2\/boss-on-the-phone\/taches\/t8.json",
+   "num":8,
+   "sequence":"1",
+   "type":"Exercice",
+   "description":"Le boss arrive \u00e0 l\u0027hotel...",
+   "taches":{
+      "tache1":{
+         "titre":"Cr\u00e9er un fond",
+         "description":"Boss en mode top model avec ses lunettes de soleil",
+         "responsable":"52",
+         "taskeurs":[
+            "41"
+         ],
+         "progression":"non commenc\u00e9e",
+         "validation":{
+            "Vincent":false,
+            "Michel":false,
+            "MAC":false
+         }
+      },
+      "tache2":{
+         "titre":"cr\u00e9er 10 vignettes",
+         "description":"10 images correspondant \u00e0 des interrogations. \u0022Maybe... he is doing....\u0022",
+         "responsable":"60",
+         "taskeurs":[
+            "31",
+            "41",
+            "61"
+         ],
+         "progression":"non commenc\u00e9e",
+         "validation":{
+            "Vincent":false,
+            "Michel":false,
+            "MAC":false
+         }
+      },
+      "tache3":{
+         "titre":"Retrouver l\u0027image \u0022D\u00e9posez l\u0027image ici\u0022",
+         "description":"\u00c7a devient urgent, Disque-Station V est \u00e0 l\u0027agoniiiieeee. Please ;)",
+         "responsable":"63",
+         "taskeurs":[
+            "63"
+         ],
+         "progression":"non commenc\u00e9e",
+         "validation":{
+            "Vincent":false,
+            "Michel":false,
+            "MAC":false
+         }
+      }
+
+   }
+}
