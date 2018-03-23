@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="theme-color" content="#FFB6C1" />
@@ -12,11 +12,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <title>Taskator</title>
-
   <style>
-  body{
-    
-  }
   .tache{
     padding: 5px;
     margin-bottom: 15px;
@@ -68,6 +64,7 @@
           ?>
           <div class="col-md-6">
             <div class="tache progress<?=$tache->getProgression();?>" id="<?=$cle;?>">
+              <a href="page.php?action=tache&saison=<?=$_GET['saison']?>&clap=<?=$_GET['clap']?>&cle_tache=<?=$cle;?>&page=<?= $_GET['page']?>">voir la tache</a>
               <h3 class="text-center"><?=$tache->titre;?></h3>
               <p><b>Description de la tache :</b> <?=$tache->description;?></p>
               <p><b>Responsable : </b><?=$tache->getNomResp();?></p>
