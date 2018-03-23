@@ -52,9 +52,12 @@ function modifPage($tab){
   $page->type = $tab['typePage'];
   $page->description = $tab['descPage'];
 
-  foreach($tab['taches'] as $n => $info){
-    $page->taches['tache'.$n] = new Tache($tab['taches'][$n]);
+  $page->taches = array();
+  foreach($tab['taches'] as $cle => $info){
+    //predump($cle);
+    $page->taches[$cle] = new Tache($tab['taches'][$cle]);
   }
+  //predump($page);
   $page->toJson();
   return true;
 }

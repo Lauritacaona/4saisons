@@ -37,7 +37,7 @@
   <h1>Créer/modifier le contenu de la page <?=$num;?> de <?=str_replace("-", " ", $clap);?></h1>
   <hr />
 
-  <form class="page" action="traitement.php" method="POST">
+  <form class="page" action="traitement.php" method="POST" id="formPage">
     <div class="col-xs-12">
       <fieldset>
         <legend>Infos générales de la page</legend>
@@ -67,23 +67,23 @@
       foreach ($page->taches as $key => $tache) {
         ?>
         <div class="col-md-6">
-          <fieldset class="zoneTacheExistante" id="tacheExistante<?=$cpt;?>">
+          <fieldset class="zoneTacheExistante" id="tacheExistantetache<?=$cpt;?>">
             <button type="button" class="supprTache">Supprimer cette tache</button>
             <legend class="tache">Tache #<?=$cpt;?></legend>
             <!-- titre -->
             <div>
               <label for="titretache">Titre : </label>
-              <input type="text"  name="taches[<?=$cpt;?>][titre]" class="titreTache" value="<?=$tache->titre;?>" />
+              <input type="text"  name="taches[tache<?=$cpt;?>][titre]" class="titreTache" value="<?=$tache->titre;?>" />
             </div>
 
             <div>
               <label for="descriptionTache">Description : </label>
-              <textarea name="taches[<?=$cpt;?>][description]" class="descriptionTache" cols="40" rows="3"><?=$tache->description;?></textarea>
+              <textarea name="taches[tache<?=$cpt;?>][description]" class="descriptionTache" cols="40" rows="3"><?=$tache->description;?></textarea>
             </div>
   <!-- Responsable -->
             <div>
               <label for="responsableTache">Responsable : </label>
-              <select name="taches[<?=$cpt;?>][responsable]" class="responsable">
+              <select name="taches[tache<?=$cpt;?>][responsable]" class="responsable">
                 <?php
                 $listeMembres = getAllMembres();
                 for($i=0; $i<count($listeMembres); $i++){
@@ -103,7 +103,7 @@
   <!-- Taskeurs -->
             <div>
               <label for="responsableTache">Responsable : </label>
-              <select name="taches[<?=$cpt;?>][taskeurs][]" class="taskeurs" multiple>
+              <select name="taches[tache<?=$cpt;?>][taskeurs][]" class="taskeurs" multiple>
                 <?php
                 for($i=0; $i<count($listeMembres); $i++){
                   if(!$listeMembres[$i]->dev){
@@ -118,15 +118,17 @@
                 }
                 ?>
               </select>
+                  <p>Maintenir la touche ctrl ou cmd enfoncée pour séléctionner plusieurs personnes</p>
             </div>
 
           <!-- Progression -->
-          <input type="hidden" name="taches[<?=$cpt;?>][etat]" value="<?=$tache->progression;?>" />
+          <input type="hidden" name="taches[tache<?=$cpt;?>][etat]" value="<?=$tache->progression;?>" />
 
-          <input type="hidden" name="taches[<?=$cpt;?>][validation][Vincent]" value="<?=$tache->validation['Vincent'];?>" />
-          <input type="hidden" name="taches[<?=$cpt;?>][validation][Michel]" value="<?=$tache->validation['Michel'];?>" />
-          <input type="hidden" name="taches[<?=$cpt;?>][validation][MAC]" value="<?=$tache->validation['MAC'];?>" />
+          <input type="hidden" name="taches[tache<?=$cpt;?>][validation][Vincent]" value="<?=$tache->validation['Vincent'];?>" />
+          <input type="hidden" name="taches[tache<?=$cpt;?>][validation][Michel]" value="<?=$tache->validation['Michel'];?>" />
+          <input type="hidden" name="taches[tache<?=$cpt;?>][validation][MAC]" value="<?=$tache->validation['MAC'];?>" />
 
+          <!-- AJOUTER ICI LE TRAITEMENT DES COMMENTAIRES CACHES  !!!!!!! -->
 
           </fieldset>
         </div>
@@ -151,6 +153,7 @@
 <!---On ne veut pas que cette div soit envoyée meme quand il n'y pas de nouvelles taches--->
 <fieldset class="nouvelleTache">
   <legend class="tache">Nouvelle tache</legend>
+  <button type="button" class="supprTache">Supprimer cette tache</button>
   <div>
     <label for="titretache">Titre : </label>
     <input type="text"  name="taches[1][titre]" class="titreTache"/>
@@ -191,6 +194,7 @@
       }
       ?>
     </select>
+    <p>Maintenir la touche ctrl ou cmd enfoncée pour séléctionner plusieurs personnes</p>
   </div>
 </fieldset>
 
@@ -205,6 +209,7 @@
     var fieldset = $(document.createElement('fieldset'));
     fieldset.prepend(ajoutTache);
     fieldset.addClass('tache'+ tache);
+    fieldset.attr('id', 'newTache' + tache);
 
     var fieldsetDiv = $(document.createElement('div'));
     fieldsetDiv.prepend(fieldset);
@@ -222,15 +227,35 @@
     //console.log($('.tache'+ tache)[0].elements);
     tache++;
   }
+
+
     $(document).ready(function(){
-      $('.ajoutTache').on('click', mafonction);
+      $('.ajoutTache').on('click', function(){
+
+        mafonction();
+        $('.supprTache').on('click','div', function(){
+          console.log($(this));
+          var parentId = $(this)[0].parentNode.id;
+          $("#" + parentId).remove();
+        });
+      });
 
       //Action du bouton valider
       //$('.valider').on('click', valider());
-      $('.supprTache').on('click', function(){
+      $('#formPage').on('click','.supprTache', function(){
+        console.log($(this));
         var parentId = $(this)[0].parentNode.id;
         $("#" + parentId).remove();
+        //Supression des div vides
+        // for(var i=0; i<$('.zoneTache').length; i++){
+        //   console.log($('.zoneTache').eq(i));
+        //   if($('.zoneTache').eq(i).children().length == 0){
+        //     $('.zoneTache').eq(i).remove;
+        //   }
+        // }
       });
+
+
     });
 
 

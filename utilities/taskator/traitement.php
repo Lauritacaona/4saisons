@@ -10,8 +10,8 @@ predump($_REQUEST);
 
 switch($_REQUEST['typeForm']){
   case 'modifPage':
-  //  $ok = modifPage($_REQUEST);
-  //  header('Location:page.php?action=affiche&saison='.$_REQUEST['saison'].'&clap='.$_REQUEST['clap'].'&page='.$_REQUEST['numPage']);
+    $ok = modifPage($_REQUEST);
+    header('Location:page.php?action=affiche&saison='.$_REQUEST['saison'].'&clap='.$_REQUEST['clap'].'&page='.$_REQUEST['numPage']);
   break;
 
   default;
