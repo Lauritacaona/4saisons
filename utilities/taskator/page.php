@@ -28,6 +28,10 @@ try{
       require('modifPage.php');
     break;
 
+    case "tache":
+      require 'detailsTache.php';
+    break;
+
     default:
      header('Location:index.php');
   }
